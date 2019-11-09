@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: acme.pay
+---
+testFramework: junit
+sourceLanguage: java

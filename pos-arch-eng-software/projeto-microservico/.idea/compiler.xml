@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="acme-hotel" />
+        <module name="api-fly" />
+        <module name="api-gateway" />
+        <module name="acme-pay" />
+        <module name="acme-travel" />
+        <module name="acme-car" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="acme-car" target="1.8" />
+      <module name="acme-hotel" target="1.8" />
+      <module name="acme-pay" target="1.8" />
+      <module name="acme-pay (1)" target="1.8" />
+      <module name="acme-pay (2)" target="1.8" />
+      <module name="acme-travel" target="1.8" />
+      <module name="api-fly" target="1.5" />
+      <module name="api-gateway" target="1.8" />
+      <module name="hello-world.main" target="11" />
+      <module name="hello-world.test" target="11" />
+      <module name="hello-world2" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
