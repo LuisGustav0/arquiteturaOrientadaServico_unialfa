@@ -44,6 +44,10 @@
   </component>
   <component name="ProjectId" id="1TOBcHF7wD2G6e9sPlgD3cRePpz" />
   <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/hello-world" />
@@ -58,7 +62,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -72,8 +76,16 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.Application">
-    <configuration name="Application (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Spring Boot.api-gateway">
+    <configuration name="acme-fly" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="api-fly" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="acme.Application" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="api-gateway" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true">
       <module name="api-gateway" />
       <extension name="coverage">
         <pattern>
@@ -82,20 +94,18 @@
         </pattern>
       </extension>
       <option name="SPRING_BOOT_MAIN_CLASS" value="acme.Application" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="api-fly" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="acme.Application" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+    <list>
+      <item itemvalue="Spring Boot.acme-fly" />
+      <item itemvalue="Spring Boot.api-gateway" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.Application (1)" />
+        <item itemvalue="Spring Boot.api-gateway" />
       </list>
     </recent_temporary>
   </component>
@@ -110,7 +120,7 @@
       <option name="presentableId" value="Default" />
       <updated>1573321338934</updated>
       <workItem from="1573321340309" duration="1998000" />
-      <workItem from="1573323419436" duration="521000" />
+      <workItem from="1573323419436" duration="2471000" />
     </task>
     <servers />
   </component>
