@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -27,9 +28,12 @@ public class Cliente implements Serializable {
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
     @ManyToOne
-    @JoinTable(name = "profissao_id")
     private Profissao profissao;
     @ManyToMany
-    @JoinTable(name = "endereco_id")
+    @JoinTable(
+            name = "cliente_endereco",
+            joinColumns = @JoinColumn(name = "cliente_id"),
+            inverseJoinColumns = @JoinColumn(name = "endereco_id")
+    )
     private List<Endereco> listaEndereco;
 }
