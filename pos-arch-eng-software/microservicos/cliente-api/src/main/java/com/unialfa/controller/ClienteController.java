@@ -1,9 +1,7 @@
 package com.unialfa.controller;
 
 import com.unialfa.model.Cliente;
-import com.unialfa.model.Endereco;
 import com.unialfa.repository.ClienteRepository;
-import com.unialfa.repository.EnderecoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
