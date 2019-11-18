@@ -24,11 +24,16 @@ public class Cliente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "nome", nullable = false, length = 80)
     private String nome;
+
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
+
     @ManyToOne
     private Profissao profissao;
+
     @ManyToMany
     @JoinTable(
             name = "cliente_endereco",

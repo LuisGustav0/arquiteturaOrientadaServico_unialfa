@@ -17,7 +17,10 @@ public class Cidade implements Serializable {
     @Id
     @Column(unique = true, nullable = false)
     private Long id;
+
+    @Column(name = "nome", nullable = false, length = 120)
     private String nome;
+
     @ManyToOne
     private Estado estado;
 }

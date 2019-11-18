@@ -16,6 +16,10 @@ public class Estado implements Serializable {
     @Id
     @Column(unique = true, nullable = false)
     private Long id;
+
+    @Column(name = "sigla", nullable = false, length = 2)
     private String sigla;
+
+    @Column(name = "nome", nullable = false, length = 120)
     private String nome;
 }
