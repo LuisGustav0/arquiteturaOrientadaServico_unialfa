@@ -28,11 +28,11 @@ public class ReservaVooService {
     }
 
     public ReservaVoo save(ReservaVoo reservaVoo) {
-        Cidade cidadeOrigem = this.clienteApi.findById(reservaVoo.getCidadeOrigem().getId());
-        Cidade cidadeDestino = this.clienteApi.findById(reservaVoo.getCidadeDestino().getId());
+        Cidade cidadeOrigem = this.clienteApi.findById(reservaVoo.getIdCidadeOrigem());
+        Cidade cidadeDestino = this.clienteApi.findById(reservaVoo.getIdCidadeDestino());
 
-        reservaVoo.setCidadeOrigem(cidadeOrigem);
-        reservaVoo.setCidadeDestino(cidadeDestino);
+        System.out.println("Cidade origem: " + cidadeOrigem.getNome());
+        System.out.println("Cidade destino: " + cidadeDestino.getNome());
 
         return this.reservaVooRepository.save(reservaVoo);
     }

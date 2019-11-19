@@ -25,9 +25,10 @@ public class ReservaVoo implements Serializable {
     private Long id;
 
     @Column(name = "id_cidade_origem", nullable = false)
-    private Cidade cidadeOrigem;
+    private Long idCidadeOrigem;
+
     @Column(name = "id_cidade_destino", nullable = false)
-    private Cidade cidadeDestino;
+    private Long idCidadeDestino;
 
     @Column(name = "preco", nullable = false)
     private BigDecimal preco;
