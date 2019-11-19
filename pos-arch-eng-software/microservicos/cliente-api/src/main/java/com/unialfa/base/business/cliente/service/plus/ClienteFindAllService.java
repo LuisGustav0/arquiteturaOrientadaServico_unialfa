@@ -1,13 +1,12 @@
 package com.unialfa.base.business.cliente.service.plus;
 
 import com.unialfa.base.business.cliente.Cliente;
-import com.unialfa.base.business.cliente.respository.ClienteRepository;
 
 import java.util.List;
 
-public interface ClienteFindAll extends ClienteRepository {
+public interface ClienteFindAllService extends ClienteGetRepositoryService {
 
     default List<Cliente> findAll() {
-        return this.findAll();
+        return this.getRepository().findAll();
     }
 }

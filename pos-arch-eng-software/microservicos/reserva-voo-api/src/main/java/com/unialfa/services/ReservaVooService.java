@@ -1,7 +1,9 @@
 package com.unialfa.services;
 
-import com.unialfa.api.cidade.ClienteApi;
+import com.unialfa.api.cidade.CidadeApi;
 import com.unialfa.api.cidade.model.Cidade;
+import com.unialfa.api.cliente.ClienteApi;
+import com.unialfa.api.cliente.model.Cliente;
 import com.unialfa.model.ReservaVoo;
 import com.unialfa.repository.ReservaVooRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,9 @@ public class ReservaVooService {
     private ReservaVooRepository reservaVooRepository;
 
     @Autowired
+    private CidadeApi cidadeApi;
+
+    @Autowired
     private ClienteApi clienteApi;
 
     public Optional<ReservaVoo> findById(Long id) {
@@ -28,9 +33,11 @@ public class ReservaVooService {
     }
 
     public ReservaVoo save(ReservaVoo reservaVoo) {
-        Cidade cidadeOrigem = this.clienteApi.findById(reservaVoo.getIdCidadeOrigem());
-        Cidade cidadeDestino = this.clienteApi.findById(reservaVoo.getIdCidadeDestino());
+        Cliente cliente = this.clienteApi.findById(reservaVoo.getIdCliente());
+        Cidade cidadeOrigem = this.cidadeApi.findById(reservaVoo.getIdCidadeOrigem());
+        Cidade cidadeDestino = this.cidadeApi.findById(reservaVoo.getIdCidadeDestino());
 
+        System.out.println("Cliente: " + cliente.getNome());
         System.out.println("Cidade origem: " + cidadeOrigem.getNome());
         System.out.println("Cidade destino: " + cidadeDestino.getNome());
 

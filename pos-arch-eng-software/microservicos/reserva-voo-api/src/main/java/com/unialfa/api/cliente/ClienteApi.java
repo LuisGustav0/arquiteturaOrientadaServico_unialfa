@@ -1,6 +1,6 @@
-package com.unialfa.api.cidade;
+package com.unialfa.api.cliente;
 
-import com.unialfa.api.cidade.model.Cidade;
+import com.unialfa.api.cliente.model.Cliente;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
@@ -15,16 +15,16 @@ public class ClienteApi {
     @Value("${url.cliente.api}")
     private String urlClienteApi;
 
-    public Cidade findById(Long id) {
+    public Cliente findById(Long id) {
         final RestTemplate restTemplate = new RestTemplate();
 
         try {
             UriComponents uri = UriComponentsBuilder.fromHttpUrl(urlClienteApi)
-                                                    .path("cidade")
+                                                    .path("cliente")
                                                     .path("/{id}")
                                                     .buildAndExpand( id);
 
-            return restTemplate.getForObject(uri.toUriString(), Cidade.class);
+            return restTemplate.getForObject(uri.toUriString(), Cliente.class);
         } catch (HttpServerErrorException | HttpClientErrorException e) {
             System.err.println("response.status: " + e.getStatusCode());
             System.err.println("response.body: " + e.getResponseBodyAsString());
