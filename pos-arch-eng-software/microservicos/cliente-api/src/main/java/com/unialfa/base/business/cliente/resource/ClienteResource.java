@@ -1,7 +1,7 @@
 package com.unialfa.base.business.cliente.resource;
 
-import com.unialfa.base.business.cliente.respository.ClienteRepository;
 import com.unialfa.base.business.cliente.Cliente;
+import com.unialfa.base.business.cliente.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,11 +22,11 @@ import java.util.Optional;
 public class ClienteResource {
 
     @Autowired
-    private ClienteRepository clienteRepository;
+    private ClienteService clienteService;
 
     @GetMapping("/{id}")
     public ResponseEntity<Cliente> findById(@PathVariable Long id) {
-        Optional<Cliente> optCliente = this.clienteRepository.findById(id);
+        Optional<Cliente> optCliente = this.clienteService.findById(id);
 
         return optCliente.map(ResponseEntity::ok)
                           .orElse(ResponseEntity.notFound().build());
@@ -34,12 +34,12 @@ public class ClienteResource {
 
     @GetMapping
     public List<Cliente> findAll() {
-        return this.clienteRepository.findAll();
+        return this.clienteService.findAll();
     }
 
     @PostMapping
     public ResponseEntity<Cliente> save(@RequestBody Cliente cliente) {
-        Cliente clienteSalvo = this.clienteRepository.save(cliente);
+        Cliente clienteSalvo = this.clienteService.save(cliente);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(clienteSalvo);
     }
@@ -47,6 +47,6 @@ public class ClienteResource {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteById(@PathVariable Long id) {
-        this.clienteRepository.deleteById(id);
+        this.clienteService.deleteById(id);
     }
 }

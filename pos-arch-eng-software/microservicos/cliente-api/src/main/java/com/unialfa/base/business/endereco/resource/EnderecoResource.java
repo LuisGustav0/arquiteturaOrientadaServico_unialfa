@@ -1,7 +1,7 @@
 package com.unialfa.base.business.endereco.resource;
 
 import com.unialfa.base.business.endereco.Endereco;
-import com.unialfa.base.business.endereco.repository.EnderecoRepository;
+import com.unialfa.base.business.endereco.service.EnderecoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,11 +22,11 @@ import java.util.Optional;
 public class EnderecoResource {
 
     @Autowired
-    private EnderecoRepository enderecoRepository;
+    private EnderecoService enderecoService;
 
     @GetMapping("/{id}")
     public ResponseEntity<Endereco> findById(@PathVariable Long id) {
-        Optional<Endereco> optEndereco = this.enderecoRepository.findById(id);
+        Optional<Endereco> optEndereco = this.enderecoService.findById(id);
 
         return optEndereco.map(ResponseEntity::ok)
                           .orElse(ResponseEntity.notFound().build());
@@ -34,12 +34,12 @@ public class EnderecoResource {
 
     @GetMapping
     public List<Endereco> findAll() {
-        return this.enderecoRepository.findAll();
+        return this.enderecoService.findAll();
     }
 
     @PostMapping
     public ResponseEntity<Endereco> save(@RequestBody Endereco endereco) {
-        Endereco enderecoSalvo = this.enderecoRepository.save(endereco);
+        Endereco enderecoSalvo = this.enderecoService.save(endereco);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(enderecoSalvo);
     }
@@ -47,6 +47,6 @@ public class EnderecoResource {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteById(@PathVariable Long id) {
-        this.enderecoRepository.deleteById(id);
+        this.enderecoService.deleteById(id);
     }
 }
