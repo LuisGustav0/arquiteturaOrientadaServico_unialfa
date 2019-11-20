@@ -28,7 +28,6 @@ public class ProfissaoServiceSaveTest {
 
     @Test
     public void saveSuccessTest() {
-        System.out.println("dasdasd");
         Profissao profissao = getProfissao("Full stack developer");
 
         profissao = this.profissaoService.save(profissao);
