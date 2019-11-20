@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
@@ -27,12 +29,16 @@ public class Cliente implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @Size(max = 80)
     @Column(name = "nome", nullable = false, length = 80)
     private String nome;
 
+    @NotNull
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
 
+    @NotNull
     @ManyToOne
     private Profissao profissao;
 

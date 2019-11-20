@@ -11,4 +11,5 @@ public interface IProfissaoResource extends ProfissaoDeleteByIdResource,
                                             ProfissaoFindByIdResource,
                                             ProfissaoGetServiceResource,
                                             ProfissaoSaveResource {
+
 }

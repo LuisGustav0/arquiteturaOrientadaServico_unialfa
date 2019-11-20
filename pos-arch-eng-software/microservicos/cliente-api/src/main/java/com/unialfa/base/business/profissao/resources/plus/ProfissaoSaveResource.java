@@ -6,10 +6,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.validation.Valid;
+
 public interface ProfissaoSaveResource extends ProfissaoGetServiceResource {
 
     @PostMapping
-    default ResponseEntity<Profissao> save(@RequestBody Profissao profissao) {
+    default ResponseEntity<Profissao> save(@Valid @RequestBody Profissao profissao) {
         Profissao profissaoSalvo = this.getService().save(profissao);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(profissaoSalvo);

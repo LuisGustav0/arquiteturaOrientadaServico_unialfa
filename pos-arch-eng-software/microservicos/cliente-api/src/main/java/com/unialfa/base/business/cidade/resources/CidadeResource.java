@@ -1,44 +1,26 @@
 package com.unialfa.base.business.cidade.resources;
 
-import com.unialfa.base.business.cidade.respository.CidadeRepository;
-import com.unialfa.base.business.cidade.Cidade;
+import com.unialfa.base.business.cidade.resources.interfaces.ICidadeResource;
+import com.unialfa.base.business.cidade.services.CidadeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-import java.util.Optional;
-
 @RestController
 @RequestMapping(path = "/cidade")
-public class CidadeResource {
+public class CidadeResource implements ICidadeResource {
 
     @Autowired
-    private CidadeRepository cidadeRepository;
+    private CidadeService cidadeService;
 
-    @PostMapping
-    public ResponseEntity<List<Cidade>> save(@RequestBody List<Cidade> listaCidade) {
-        List<Cidade> listaCidadeSalvo = this.cidadeRepository.saveAll(listaCidade);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(listaCidadeSalvo);
+    @Override
+    public CidadeService getService() {
+        return this.cidadeService;
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Cidade> findById(@PathVariable Long id) {
-        Optional<Cidade> optCidade = this.cidadeRepository.findById(id);
-
-        return optCidade.map(ResponseEntity::ok)
-                         .orElse(ResponseEntity.notFound().build());
-    }
-
-    @GetMapping
-    public List<Cidade> findAll() {
-        return this.cidadeRepository.findAll();
-    }
+//
+//    @GetMapping
+//    public List<Cidade> findAll() {
+//        return this.cidadeRepository.findAll();
+//    }
 }

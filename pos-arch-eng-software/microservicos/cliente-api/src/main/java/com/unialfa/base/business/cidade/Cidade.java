@@ -8,6 +8,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Getter
@@ -19,7 +21,9 @@ public class Cidade implements Serializable {
     @Column(unique = true, nullable = false)
     private Long id;
 
-    @Column(name = "nome", nullable = false, length = 120)
+    @NotNull
+    @Size(max = 120)
+    @Column(name = "nome", unique = true, nullable = false, length = 120)
     private String nome;
 
     @ManyToOne
