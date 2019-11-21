@@ -31,7 +31,7 @@ public class ReservaVooServiceTest {
 
     private static Reserva getReserva(Hotel hotel, int days) {
         Reserva reserva = new Reserva();
-        reserva.setDataHoraFimEstadia(LocalDateTime.now());
+        reserva.setDataHotaInicioEstadia(LocalDateTime.now());
         reserva.setDataHoraFimEstadia(LocalDateTime.now().plusDays(days));
         reserva.setPreco(new BigDecimal("1.450"));
         reserva.setHotel(hotel);
