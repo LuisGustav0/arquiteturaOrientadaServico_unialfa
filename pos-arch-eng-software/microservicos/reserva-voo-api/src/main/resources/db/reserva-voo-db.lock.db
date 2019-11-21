@@ -1,6 +1,6 @@
 #FileLock
-#Thu Nov 21 13:05:33 UTC 2019
-server=192.168.1.107\:20592
+#Thu Nov 21 13:08:40 UTC 2019
+server=192.168.1.107\:20686
 hostName=DESKTOP-H27TP1D
 method=file
-id=16e8e115d2adb072c9b013af6c3e73d7c007c7c3f50
+id=16e8e143962adec283df61010c6139d2dcf4be39e55

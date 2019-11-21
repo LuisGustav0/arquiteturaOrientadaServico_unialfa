@@ -30,10 +30,13 @@ public class ReservaVooServiceTest {
     }
 
     private static Reserva getReserva(Hotel hotel, int days) {
+        BigDecimal preco = new BigDecimal(120);
+        preco = preco.multiply(new BigDecimal(days));
+
         Reserva reserva = new Reserva();
         reserva.setDataHotaInicioEstadia(LocalDateTime.now());
         reserva.setDataHoraFimEstadia(LocalDateTime.now().plusDays(days));
-        reserva.setPreco(new BigDecimal("1.450"));
+        reserva.setPreco(preco);
         reserva.setHotel(hotel);
 
         return reserva;
