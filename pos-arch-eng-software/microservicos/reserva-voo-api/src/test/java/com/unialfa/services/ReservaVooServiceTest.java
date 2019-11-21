@@ -57,16 +57,10 @@ public class ReservaVooServiceTest {
             return;
         }
 
-        Reserva reserva01 = getReserva(hotel, 5);
-        Reserva reserva02 = getReserva(hotel, 10);
-        Reserva reserva03 = getReserva(hotel, 15);
-        Reserva reserva04 = getReserva(hotel, 20);
-        Reserva reserva05 = getReserva(hotel, 25);
-
-        Arrays.asList(reserva01, reserva02, reserva03, reserva04, reserva05)
-              .forEach(reserva -> {
-                  salvarHotel(manager, reserva);
-              });
+        for (int i = 1; i <= 10000; i++) {
+            Reserva reserva = getReserva(hotel, i);
+            salvarHotel(manager, reserva);
+        }
     }
 
     public static void main(String args[]) {
