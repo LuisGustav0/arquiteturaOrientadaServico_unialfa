@@ -1,4 +1,4 @@
-package com.unialfa.base.api.reservaVoo.model;
+package com.unialfa.base.api.reservavoo.model;
 
 import lombok.Getter;
 import lombok.Setter;

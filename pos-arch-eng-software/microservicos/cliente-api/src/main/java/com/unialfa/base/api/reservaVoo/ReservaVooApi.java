@@ -1,6 +1,6 @@
-package com.unialfa.base.api.reservaVoo;
+package com.unialfa.base.api.reservavoo;
 
-import com.unialfa.base.api.reservaVoo.model.ReservaVoo;
+import com.unialfa.base.api.reservavoo.model.ReservaVoo;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
