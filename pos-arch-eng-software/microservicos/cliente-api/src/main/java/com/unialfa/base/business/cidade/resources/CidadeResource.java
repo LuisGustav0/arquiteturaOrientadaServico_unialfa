@@ -17,10 +17,4 @@ public class CidadeResource implements ICidadeResource {
     public CidadeService getService() {
         return this.cidadeService;
     }
-
-//
-//    @GetMapping
-//    public List<Cidade> findAll() {
-//        return this.cidadeRepository.findAll();
-//    }
 }

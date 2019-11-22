@@ -1,6 +1,5 @@
 package com.unialfa.model;
 
-import com.unialfa.api.cidade.model.Cidade;
 import lombok.Getter;
 import lombok.Setter;
 
