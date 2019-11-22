@@ -90,3 +90,27 @@ java.sql.SQLClientInfoException: Client info name 'ApplicationName' not supporte
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:834)
+11-22 12:11:51 database: close
+org.h2.message.DbException: IO Exception: "java.io.IOException: A operação solicitada não pode ser executada em um arquivo com uma seção mapeada pelo usuário aberta"; "D:/Desenvolvimento/git/public/arquiteturaOrientadaServico_unialfa/pos-arch-eng-software/microservicos/cliente-api/src/main/resources/db/cliente-db.h2.db" [90031-176]
+	at org.h2.message.DbException.get(DbException.java:167)
+	at org.h2.message.DbException.convertIOException(DbException.java:329)
+	at org.h2.store.FileStore.setLength(FileStore.java:362)
+	at org.h2.store.PageStore.compact(PageStore.java:649)
+	at org.h2.engine.Database.closeOpenFilesAndUnlock(Database.java:1301)
+	at org.h2.engine.Database.close(Database.java:1251)
+	at org.h2.engine.Database.removeSession(Database.java:1122)
+	at org.h2.engine.Session.close(Session.java:672)
+	at org.h2.jdbc.JdbcConnection.close(JdbcConnection.java:383)
+	at com.zaxxer.hikari.pool.PoolBase.quietlyCloseConnection(PoolBase.java:138)
+	at com.zaxxer.hikari.pool.HikariPool.lambda$closeConnection$1(HikariPool.java:447)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLException: IO Exception: "java.io.IOException: A operação solicitada não pode ser executada em um arquivo com uma seção mapeada pelo usuário aberta"; "D:/Desenvolvimento/git/public/arquiteturaOrientadaServico_unialfa/pos-arch-eng-software/microservicos/cliente-api/src/main/resources/db/cliente-db.h2.db" [90031-176]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	... 14 more
+Caused by: java.io.IOException: A operação solicitada não pode ser executada em um arquivo com uma seção mapeada pelo usuário aberta
+	at java.base/java.io.RandomAccessFile.setLength(Native Method)
+	at org.h2.store.fs.FileDisk.truncate(FilePathDisk.java:423)
+	at org.h2.store.FileStore.setLength(FileStore.java:357)
+	... 11 more

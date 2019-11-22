@@ -1,4 +1,4 @@
-package com.unialfa.resoruces;
+package com.unialfa.resources;
 
 import com.unialfa.model.ReservaVoo;
 import com.unialfa.services.ReservaVooService;
