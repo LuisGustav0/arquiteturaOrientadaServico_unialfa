@@ -1,0 +1,16 @@
+micronaut.server.port=-1
+#micronaut.server.port=8180
+micronaut.application.name=acme-travel
+micronaut.application.instance.id= ${random.shortuuid}
+
+
+
+# disable authentication for the /info endpoint
+#endpoints.info.enabled=true
+#endpoints.info.sensitive=false
+#endpoints.all.path=/api
+#endpoints.all.enabled=true
+consul.client.registration.enabled=true
+consul.client.registration.defaultZone= "${CONSUL_HOST:localhost}:${CONSUL_PORT:8500}"
+micronaut.caches.discovery-client.expire-after-access=60s
+

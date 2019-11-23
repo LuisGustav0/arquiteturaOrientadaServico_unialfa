@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: acme.hotel
+---
+testFramework: junit
+sourceLanguage: java

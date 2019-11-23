@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: acme.fly
+---
+testFramework: junit
+sourceLanguage: java

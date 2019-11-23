@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: acme.travel
+---
+testFramework: junit
+sourceLanguage: java

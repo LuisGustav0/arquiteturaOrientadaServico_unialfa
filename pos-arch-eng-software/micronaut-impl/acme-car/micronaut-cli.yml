@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: acme.car
+---
+testFramework: junit
+sourceLanguage: java

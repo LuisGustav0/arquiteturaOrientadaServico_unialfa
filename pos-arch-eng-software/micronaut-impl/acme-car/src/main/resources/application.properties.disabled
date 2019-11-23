@@ -1,0 +1,10 @@
+micronaut.server.port=-1
+#micronaut.server.port=8080
+micronaut.application.name=acme-car
+
+# disable authentication for the /info endpoint
+#endpoints.info.enabled=true
+#endpoints.info.sensitive=false
+#endpoints.all.path=/api
+#endpoints.all.enabled=true
+consul.client.registration.enabled=true

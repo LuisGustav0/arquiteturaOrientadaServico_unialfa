@@ -1,5 +1,0 @@
-profile: service
-defaultPackage: hello.world2
----
-testFramework: junit
-sourceLanguage: java
