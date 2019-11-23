@@ -8,7 +8,7 @@ import java.util.List;
 public interface ClienteFindAllResource extends ClienteGetServiceResource {
 
     @GetMapping
-    default List<Cliente> findByAll() {
+    default List<Cliente> findAll() {
         return this.getService().findAll();
     }
 }
