@@ -22,7 +22,7 @@ public class CidadeApi {
             UriComponents uri = UriComponentsBuilder.fromHttpUrl(urlClienteApi)
                                                     .path("cidade")
                                                     .path("/{id}")
-                                                    .buildAndExpand( id);
+                                                    .buildAndExpand(id);
 
             return restTemplate.getForObject(uri.toUriString(), Cidade.class);
         } catch (HttpServerErrorException | HttpClientErrorException e) {

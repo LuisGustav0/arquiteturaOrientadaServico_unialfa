@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,6 +31,11 @@ public class ReservaVooResource {
 
         return optReservaVoo.map(ResponseEntity::ok)
                           .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("getTotalCliente/{idCliente}")
+    public BigDecimal getValorTotalByIdCliente(@PathVariable Long idCliente) {
+      return this.reservaVooService.getValorTotalByIdCliente(idCliente);
     }
 
     @GetMapping

@@ -9,6 +9,8 @@ import com.unialfa.repository.ReservaVooRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,5 +48,17 @@ public class ReservaVooService {
 
     public void deleteById(Long id) {
         this.reservaVooRepository.deleteById(id);
+    }
+
+    public BigDecimal getValorTotalByIdCliente(Long idCliente) {
+        List<ReservaVoo> listaReservaVoo = this.reservaVooRepository.findAll();
+        listaReservaVoo = Optional.ofNullable(listaReservaVoo).orElse(new ArrayList<>());
+
+        BigDecimal valorTotal = listaReservaVoo.stream()
+                                               .filter(reservaVoo -> idCliente.equals(reservaVoo.getIdCliente()))
+                                               .map(ReservaVoo::getPreco)
+                                               .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        return valorTotal;
     }
 }
