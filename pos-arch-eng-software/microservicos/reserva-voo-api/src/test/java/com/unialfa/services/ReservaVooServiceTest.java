@@ -1,9 +1,6 @@
 package com.unialfa.services;
 
-import com.unialfa.api.cidade.CidadeApi;
-import com.unialfa.api.cidade.model.Cidade;
-import com.unialfa.api.cliente.ClienteApi;
-import com.unialfa.api.cliente.model.Cliente;
+import com.unialfa.model.Cliente;
 import com.unialfa.model.ReservaVoo;
 import com.unialfa.repository.ReservaVooRepository;
 import org.junit.Test;
@@ -25,12 +22,6 @@ public class ReservaVooServiceTest {
     private ReservaVooService reservaVooService;
 
     @Mock
-    private ClienteApi clienteApi;
-
-    @Mock
-    private CidadeApi cidadeApi;
-
-    @Mock
     private ReservaVooRepository reservaVooRepository;
 
     @Test
@@ -44,9 +35,12 @@ public class ReservaVooServiceTest {
 
     @Test
     public void findAllTest() {
+        Cliente cliente = new Cliente();
+        cliente.setId(1L);
+
         ReservaVoo reservaVoo = new ReservaVoo();
         reservaVoo.setId(1L);
-        reservaVoo.setIdCliente(1L);
+        reservaVoo.setCliente(cliente);
 
         when(this.reservaVooRepository.findById(reservaVoo.getId())).thenReturn(Optional.of(reservaVoo));
 
@@ -59,27 +53,16 @@ public class ReservaVooServiceTest {
         cliente.setId(1L);
         cliente.setNome("Luis Gustavo");
 
-        Cidade cidadeOrigem = new Cidade();
-        cidadeOrigem.setId(1L);
-        cidadeOrigem.setNome("Goiania");
-
-        Cidade cidadeDestino = new Cidade();
-        cidadeDestino.setId(2L);
-        cidadeDestino.setNome("Uberlândia");
-
         ReservaVoo reservaVoo = new ReservaVoo();
-        reservaVoo.setIdCliente(1L);
-        reservaVoo.setIdCidadeOrigem(1L);
-        reservaVoo.setIdCidadeDestino(2L);
+        reservaVoo.setCliente(cliente);
+        reservaVoo.setCidadeOrigem("Goiania");
+        reservaVoo.setCidadeDestino("Uberlandia");
 
         ReservaVoo reservaVooSalvo = new ReservaVoo();
-        reservaVooSalvo.setIdCliente(1L);
-        reservaVooSalvo.setIdCidadeOrigem(1L);
-        reservaVooSalvo.setIdCidadeDestino(2L);
+        reservaVooSalvo.setCliente(cliente);
+        reservaVooSalvo.setCidadeOrigem("Goiania");
+        reservaVooSalvo.setCidadeDestino("Uberlandia");
 
-        when(this.clienteApi.findById(reservaVoo.getIdCliente())).thenReturn(cliente);
-        when(this.cidadeApi.findById(reservaVoo.getIdCidadeOrigem())).thenReturn(cidadeOrigem);
-        when(this.cidadeApi.findById(reservaVoo.getIdCidadeDestino())).thenReturn(cidadeDestino);
         when(this.reservaVooRepository.save(reservaVoo)).thenReturn(reservaVooSalvo);
 
         this.reservaVooService.save(reservaVoo);

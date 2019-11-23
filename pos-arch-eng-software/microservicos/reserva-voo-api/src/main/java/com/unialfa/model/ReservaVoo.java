@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -23,14 +24,14 @@ public class ReservaVoo implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "id_cliente", nullable = false)
-    private Long idCliente;
+    @ManyToOne
+    private Cliente cliente;
 
-    @Column(name = "id_cidade_origem", nullable = false)
-    private Long idCidadeOrigem;
+    @Column(name = "cidade_origem", nullable = false, length = 120)
+    private String cidadeOrigem;
 
-    @Column(name = "id_cidade_destino", nullable = false)
-    private Long idCidadeDestino;
+    @Column(name = "cidade_destino", nullable = false, length = 120)
+    private String cidadeDestino;
 
     @Column(name = "preco", nullable = false)
     private BigDecimal preco;

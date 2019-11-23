@@ -1,9 +1,6 @@
 package com.unialfa.services;
 
-import com.unialfa.api.cidade.CidadeApi;
-import com.unialfa.api.cidade.model.Cidade;
-import com.unialfa.api.cliente.ClienteApi;
-import com.unialfa.api.cliente.model.Cliente;
+import com.unialfa.model.Cliente;
 import com.unialfa.model.ReservaVoo;
 import com.unialfa.repository.ReservaVooRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +18,7 @@ public class ReservaVooService {
     private ReservaVooRepository reservaVooRepository;
 
     @Autowired
-    private CidadeApi cidadeApi;
-
-    @Autowired
-    private ClienteApi clienteApi;
+    private ClienteService clienteService;
 
     public Optional<ReservaVoo> findById(Long id) {
         return this.reservaVooRepository.findById(id);
@@ -35,13 +29,9 @@ public class ReservaVooService {
     }
 
     public ReservaVoo save(ReservaVoo reservaVoo) {
-        Cliente cliente = this.clienteApi.findById(reservaVoo.getIdCliente());
-        Cidade cidadeOrigem = this.cidadeApi.findById(reservaVoo.getIdCidadeOrigem());
-        Cidade cidadeDestino = this.cidadeApi.findById(reservaVoo.getIdCidadeDestino());
+        Cliente cliente = this.clienteService.save(reservaVoo.getCliente());
 
-        System.out.println("Cliente: " + cliente.getNome());
-        System.out.println("Cidade origem: " + cidadeOrigem.getNome());
-        System.out.println("Cidade destino: " + cidadeDestino.getNome());
+        reservaVoo.setCliente(cliente);
 
         return this.reservaVooRepository.save(reservaVoo);
     }
@@ -50,12 +40,25 @@ public class ReservaVooService {
         this.reservaVooRepository.deleteById(id);
     }
 
+    private Long getIdClientePorReserva(ReservaVoo reservaVoo) {
+        return Optional.ofNullable(reservaVoo)
+                       .map(ReservaVoo::getCliente)
+                       .map(Cliente::getId)
+                       .orElse(0L);
+    }
+
+    private boolean filtroPorIdCliente(ReservaVoo reservaVoo, Long idCliente) {
+        Long idClienteReserva = getIdClientePorReserva(reservaVoo);
+
+        return idClienteReserva.equals(idCliente);
+    }
+
     public BigDecimal getValorTotalByIdCliente(Long idCliente) {
         List<ReservaVoo> listaReservaVoo = this.reservaVooRepository.findAll();
         listaReservaVoo = Optional.ofNullable(listaReservaVoo).orElse(new ArrayList<>());
 
         BigDecimal valorTotal = listaReservaVoo.stream()
-                                               .filter(reservaVoo -> idCliente.equals(reservaVoo.getIdCliente()))
+                                               .filter(reservaVoo -> filtroPorIdCliente(reservaVoo, idCliente))
                                                .map(ReservaVoo::getPreco)
                                                .reduce(BigDecimal.ZERO, BigDecimal::add);
 
