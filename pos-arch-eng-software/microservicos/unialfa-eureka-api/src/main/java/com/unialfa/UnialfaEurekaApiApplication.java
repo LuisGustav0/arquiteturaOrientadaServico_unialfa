@@ -2,13 +2,14 @@ package com.unialfa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 @SpringBootApplication
-@EnableEurekaClient
-public class ReservaVooApiApplication {
+@EnableEurekaServer
+public class UnialfaEurekaApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ReservaVooApiApplication.class, args);
+		SpringApplication.run(UnialfaEurekaApiApplication.class, args);
 	}
+
 }
